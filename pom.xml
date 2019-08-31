@@ -57,12 +57,14 @@
       <version>${mybatis.version}</version>
     </dependency>
 
+    <!--spring boot热部署的pom.xml依赖-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -116,11 +118,16 @@
     </dependency>
   </dependencies>
 
+<!--Maven插件设置，热部署相关；需要在spring-boot-maven-plugin插件中配置参数-->
   <build>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -53,7 +53,6 @@ public class OrderServiceImpl extends BaseService {
 
         for (OrderDTO order : orders) {
             List<OrderItemDTO> orderItems = orderItemService.getOrderItemsByOrder(order.getId());
-
             order.setOrderItems(orderItems);
         }
 
