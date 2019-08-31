@@ -53,13 +53,17 @@ public class OrderController extends BaseController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String orderList(Model model) {
         MemberDTO member = this.getCurrentUser();
-        // 传递商品分类数据
-        model.addAttribute("productCategories", productCategoryService.getProductCategories());
-        // 传递我的订单数据
-        model.addAttribute("orders", orderService.getOrdersByMember(member.getId()));
-        // 传递登录会员数据
-        model.addAttribute("member", member);
-        return "/order/list";
+        if(member != null){
+            // 传递商品分类数据
+            model.addAttribute("productCategories", productCategoryService.getProductCategories());
+            // 传递我的订单数据
+            model.addAttribute("orders", orderService.getOrdersByMember(member.getId()));
+            // 传递登录会员数据
+            model.addAttribute("member", member);
+            return "/order/list";
+        }else{
+            return "login";
+        }
     }
 
     /**
@@ -107,7 +111,6 @@ public class OrderController extends BaseController {
         model.addAttribute("totalAmount", totalAmount);
         model.addAttribute("params", params);
         model.addAttribute("member", member);
-
         return "/order/main";
     }
 
@@ -121,9 +124,9 @@ public class OrderController extends BaseController {
      */
     @RequestMapping(value = "/main/{orderId}", method = RequestMethod.GET)
     public String orderForm(Model model, @PathVariable Long orderId) {
-        // 获取当前的登录用户
-        MemberDTO member = this.getCurrentUser();
-        OrderDTO order = orderService.saveOrder(orderId, member);
+    // 获取当前的登录用户
+    MemberDTO member = this.getCurrentUser();
+    OrderDTO order = orderService.saveOrder(orderId, member);
         model.addAttribute("receivers", receiverService.getReceiversByMember(member.getId()));
         model.addAttribute("products", orderItemService.getOrderItemsByOrder(orderId));
         model.addAttribute("productTotalPrice", order.getProductTotalPrice());
@@ -132,6 +135,7 @@ public class OrderController extends BaseController {
         model.addAttribute("totalCartCount", cartItemService.getTotalCartCount(member, getSession()));
         model.addAttribute("member", member);
         return "/front/order/main";
+
     }
 
     @RequestMapping("/receiver/form/{receiverId}")
