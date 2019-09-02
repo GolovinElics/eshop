@@ -19,7 +19,7 @@ import java.util.Date;
 public class EvaluateDTO extends BaseDTO {
 
     // 评分
-    private Integer score = 0;
+    private Integer score = 3;
 
     // 满意度
     private String evaluateStatus;

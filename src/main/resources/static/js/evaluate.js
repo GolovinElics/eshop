@@ -6,9 +6,9 @@
  *****************************************************************************/
 /**
  * 自定义评论的js文件用于封装评论的js
- * 
+ *
  * @author QingShiXun
- * 
+ *
  * @version 1.0
  */
 var evaluate = (function() {
@@ -68,6 +68,21 @@ var evaluate = (function() {
 			}
 		});
 	}
+
+	// //实时统计评价栏的输入字数
+	// function wordStatic(input) {
+	// 	// 获取要显示已经输入字数文本框对象
+	// 	var content = document.getElementById('num');
+	// 	if (content && input) {
+	// 		// 获取输入框输入内容长度并更新到界面
+	// 		var value = input.value;
+	// 		// 将换行符不计算为单词数
+	// 		value = value.replace(/[\n\r]/gi,"");
+	// 		// 更新计数
+	// 		content .innerText = value.length;
+	// 	}
+	// }
+
 	// 设置点评星星样式
 	function starComm(starId) {
 		var oStar = document.getElementById(starId);

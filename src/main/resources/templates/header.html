@@ -22,9 +22,11 @@
       <div class="comWidth">
         <div class="rightBar fr">
           欢迎 <span th:if="${session['member']} != null" th:text="${session['member'].userName}"></span> 来到明博商城网！
-          <a th:if="${session['member']} == null" th:href="@{/front/login}">登录</a>|
+          <a th:if="${session['member']} == null" th:href="@{/front/login}">登录</a>
+          <a th:if="${session['member']} != null" th:href="@{/front/member/usercenter}">个人中心</a>|
           <a th:if="${session['member']} != null" th:href="@{/front/logout}">退出登录</a>
-          <a th:if="${session['member']} == null" th:href="@{/front/register}">免费注册</a>|<a th:href="@{/front/order/list}">我的订单</a>
+          <a th:if="${session['member']} == null" th:href="@{/front/register}">免费注册</a>|
+          <a th:href="@{/front/order/list}">我的订单</a>
         </div>
       </div>
     </div>
@@ -54,7 +56,7 @@
           <ul class="clearfix">
             <li><a th:href="@{/front/index}" class="current">首页</a></li>
             <li><a href="http://localhost:8080/login/to_login">秒杀</a></li>
-            <!--<li><a th:href="@{/front/chat}" class="current">聊天</a></li>-->
+            <li><a href="http://localhost:8082/chat">聊天</a></li>
             <!--<li><a href="#">服装城</a></li>-->
             <!--<li><a href="#">京东超市</a></li>-->
             <!--<li><a href="#">团购</a></li>-->
