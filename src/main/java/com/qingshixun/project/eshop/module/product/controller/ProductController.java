@@ -118,6 +118,7 @@ public class ProductController extends BaseController {
         model.addAttribute("orderId", orderId);
         model.addAttribute("member", dbMember);
         model.addAttribute("evaluate", evaluateService.getEvaluateByMemberAndProductAndOrder(dbMember.getId(), productId, orderId));
+        //model.addAttribute("evaluateStatus", evaluateService.getEvaluateByMemberAndProductAndOrder(dbMember.getId(), productId, orderId));
         return "/product/evaluate";
     }
 

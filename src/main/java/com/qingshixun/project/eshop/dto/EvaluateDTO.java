@@ -19,7 +19,7 @@ import java.util.Date;
 public class EvaluateDTO extends BaseDTO {
 
     // 评分
-    private Integer score = 0;
+    private Integer score=0;
 
     // 满意度
     private String evaluateStatus;
@@ -42,16 +42,12 @@ public class EvaluateDTO extends BaseDTO {
     // 修改时间
     private String updateTime = DateUtils.timeToString(new Date());
 
-    public EvaluateDTO() {
-        setEvaluateStatus();
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
     public void setScore(Integer score) {
-        this.score = score;
+    	this.score = score;
+    	setEvaluateStatus(score);
+    }
+    public Integer getScore() {
+    	return score;
     }
 
     public String getDescription() {
@@ -100,10 +96,6 @@ public class EvaluateDTO extends BaseDTO {
 
     public void setEvaluateStatus(String evaluateStatus) {
         this.evaluateStatus = evaluateStatus;
-    }
-
-    public void setEvaluateStatus() {
-        setEvaluateStatus(score);
     }
 
     public void setEvaluateStatus(int score) {
