@@ -73,6 +73,9 @@
         <div class="nav">
           <ul class="clearfix">
             <li><a th:href="@{/front/index}" class="current">首页</a></li>
+            <!--<li><a href="./chat" class="current">聊天机器人</a></li>-->
+            <li><a th:if="${session['member']} != null" th:href="@{/front/chat}" class="current">聊天机器人</a></li>
+            <li><a href="http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/index.jsp" class="current">付款</a></li>
             <li><a th:href="@{/front/chat} " th:if="${session['member']} != null" class="current">聊天机器人</a></li>
             <!--<li><a th:href="@{/front/chat}" class="current">聊天</a></li>-->
             <li><a th:href="@{/front/seckill}" class="current">秒杀</a></li>

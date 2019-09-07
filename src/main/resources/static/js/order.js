@@ -41,7 +41,52 @@ var order = (function() {
 		});
 		// 点击去结算按钮触发事件
 		$("#commitOrder").click(
+		      function() {
+		         var receiverId = $("#defaultReceiver").data("id");
+		         var pargrams = '';
+		         var payDiv;
+		         var totalAmount = $('#totalAmount').html();
+		         $("#productList").find('.productCount').each(function() {
+		            var $this = $(this);
+		            var id = $this.data("id");
+		            var count = $this.data("count");
+		            var pargram = id + "_" + count;
+		            pargrams += pargram + ",";// 遍历选中的checkbox
+		         });
+		         if (receiverId === null) {
+		            toastr.warning('请先设置默认联系人！');
+		         } else {
+		            $.post(g_rootPath + "/front/order/commit/" + pargrams + "/" + receiverId, function(response) {
+		               if (response.status === '0') {
+		                  var orderId = response.data;
+		                  payDiv = $(
+		                        '<div class="ms-alert">' + '<div class="ms-alert-body">' + '<div class="ms-alert-content">当前付款金额为' + totalAmount + ' <br> <br> 是否确认付款 </div>'
+		                              + '<div class="ms-alert-buttons">' + '<div class="ms-alert-button confirm">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
+		                              + '</div>' + '</div>').alertconfirm();
+		                  // 点击确认付款
+		                  payDiv.on('confirm.ms.alert', function(e) {
+		                     $.post(g_rootPath + "/front/order/pay/" + orderId, function(response) {
+		                        if (response.status === '0') {
+		                           toastr.success('付款成功！');
+		                           payDiv.alertconfirm('hide');
+		                           window.location.href = g_rootPath + "/front/order/list";
+		                        }
+
+		                     });
+		                     e.preventDefault();
+		                  }).on('show.ms.alert shown.ms.alert hide.ms.alert hidden.ms.alert');
+		                  payDiv.alertconfirm('show');
+		               }
+
+		            });
+		         }
+
+		      });
+		// 点击支付宝结算按钮触发事件
+		$("#commitOrder1").click(
 				function() {
+					var totalAmount1 = $('#totalAmount1').text();
+					
 					var receiverId = $("#defaultReceiver").data("id");
 					var pargrams = '';
 					var payDiv;
@@ -61,7 +106,7 @@ var order = (function() {
 								var orderId = response.data;
 								payDiv = $(
 										'<div class="ms-alert">' + '<div class="ms-alert-body">' + '<div class="ms-alert-content">当前付款金额为' + totalAmount + ' <br> <br> 是否确认付款 </div>'
-												+ '<div class="ms-alert-buttons">' + '<div class="ms-alert-button confirm">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
+												+ '<div class="ms-alert-buttons">' + '<div ><a href="http://192.168.9.147:8080/alipay.trade.page.pay-JAVA-UTF-8?totalAmount='+totalAmount1+'">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
 												+ '</div>' + '</div>').alertconfirm();
 								// 点击确认付款
 								payDiv.on('confirm.ms.alert', function(e) {
@@ -82,6 +127,50 @@ var order = (function() {
 					}
 
 				});
+		
+		// 点击银联结算按钮触发事件
+		$("#commitOrder2").click(
+		      function() {
+		         var receiverId = $("#defaultReceiver").data("id");
+		         var pargrams = '';
+		         var payDiv;
+		         var totalAmount = $('#totalAmount').html();
+		         $("#productList").find('.productCount').each(function() {
+		            var $this = $(this);
+		            var id = $this.data("id");
+		            var count = $this.data("count");
+		            var pargram = id + "_" + count;
+		            pargrams += pargram + ",";// 遍历选中的checkbox
+		         });
+		         if (receiverId === null) {
+		            toastr.warning('请先设置默认联系人！');
+		         } else {
+		            $.post(g_rootPath + "/front/order/commit/" + pargrams + "/" + receiverId, function(response) {
+		               if (response.status === '0') {
+		                  var orderId = response.data;
+		                  payDiv = $(
+		                        '<div class="ms-alert">' + '<div class="ms-alert-body">' + '<div class="ms-alert-content">当前付款金额为' + totalAmount + ' <br> <br> 是否确认付款 </div>'
+		                              + '<div class="ms-alert-buttons">' + '<div><a href="http://192.168.9.147:8080/ACPSample_B2C/pages/consume.jsp">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
+		                              + '</div>' + '</div>').alertconfirm();
+		                  // 点击确认付款
+		                  payDiv.on('confirm.ms.alert', function(e) {
+		                     $.post(g_rootPath + "/front/order/pay/" + orderId, function(response) {
+		                        if (response.status === '0') {
+		                           toastr.success('付款成功！');
+		                           payDiv.alertconfirm('hide');
+		                           window.location.href = g_rootPath + "/front/order/list";
+		                        }
+
+		                     });
+		                     e.preventDefault();
+		                  }).on('show.ms.alert shown.ms.alert hide.ms.alert hidden.ms.alert');
+		                  payDiv.alertconfirm('show');
+		               }
+
+		            });
+		         }
+
+		      });
 		// 点击删除按钮触发事件
 		$(".delete-receiver-btn").click(function() {
 			var id = $(this).data("id");
