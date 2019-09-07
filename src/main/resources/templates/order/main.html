@@ -86,6 +86,8 @@
           实付<span id="totalAmount">￥<span id="totalAmount1" th:text="${totalAmount}"></span></span>
         </div>
         <input th:if="${orderId} == null" id="commitOrder" type="button" value="提交订单">
+        <input id="commitOrder1" type="button" value="支付宝">
+        <input id="commitOrder2" type="button" value="银联付款">
         <input th:if="${orderId} != null" id="payOrder" type="button" value="确认付款">
       </div>
     </div>
