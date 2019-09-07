@@ -52,6 +52,9 @@ public class EvaluateDTO extends BaseDTO {
 
     public void setScore(Integer score) {
         this.score = score;
+        //错误发生在这里，拿到前端数据后，没有将score拿去判断处理
+        //所以，再调用一次判断逻辑即可：
+        setEvaluateStatus(score);
     }
 
     public String getDescription() {

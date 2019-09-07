@@ -782,10 +782,10 @@
 
  .container{width:300px;margin:80px auto}
             span.c-value-no{display: block; float: left;margin-right: 10px;}
-            .c-value-no,.c-value-no em{
+            .c-value-no,
+            .c-value-no em{
                 background:url("../images/star.png") -66px -12px repeat;height:12px;width:58px;display:inline-block;
                 font-size:0;line-height:0;text-align: left}
-
             .c-value-no em{background-position:-66px 0;}
             .c-value-0 em{width:0;}
             .c-value-1 em{width:12px;}

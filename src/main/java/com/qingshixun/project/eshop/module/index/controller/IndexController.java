@@ -1,6 +1,7 @@
 package com.qingshixun.project.eshop.module.index.controller;
 
 import com.qingshixun.project.eshop.dto.MemberDTO;
+import com.qingshixun.project.eshop.dto.ProductDTO;
 import com.qingshixun.project.eshop.module.advertisement.service.AdvertisementServiceImpl;
 import com.qingshixun.project.eshop.module.cart.service.CartItemServiceImpl;
 import com.qingshixun.project.eshop.module.product.service.ProductCategoryServiceImpl;
@@ -10,7 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
+/**
+ * @author Golovin
+ */
 @Controller
 public class IndexController extends BaseController {
 
@@ -61,6 +68,18 @@ public class IndexController extends BaseController {
     @RequestMapping("/front/login")
     public String login() {
         return "/login";
+    }
+
+    /**
+     * 搜索界面
+     * 按词条模糊查询产品
+     * @return
+     */
+    @RequestMapping("/front/search")
+    public String search(Model model, @RequestParam String name){
+        List<ProductDTO> products = productService.getProductByName(name);
+        model.addAttribute("products",products);
+        return "/search";
     }
 
 }

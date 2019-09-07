@@ -41,21 +41,25 @@ var product = (function () {
         })
 
         $('#productList').load(
-          g_rootPath + '/product/search/list?searchPargam=' + searchPargam + '&brandId=' + brandId + '&categoryId=' + categoryId + '&pageNo=' + 1 + '&productName=' + productName)
+          g_rootPath + '/product/search/list?searchPargam=' + searchPargam + '&brandId=' + brandId + '&categoryId=' + categoryId + '&pageNo=' + pageNo + '&productName=' + productName)
       })
   }
 
   function initMain (productId) {
-    $('#evaluateListPanel').load(g_rootPath + '/front/product/evaluate/list/?productId=' + productId)
+    $('#evaluateListPanel').load(g_rootPath + '/front/product/evaluate/list/?productId=' + productId + '&status=' + status )
     $('.evaluateStatus').click(function () {
       $('.evaluateStatus').removeClass('active')
       $(this).addClass('active')
+      pageNo = pageNo + 1;
+      // 问题就出在这里，这里的status的值
       status = $(this).data('value')
+      //改写一：
+      // alert(document.getElementById('status').dataset.value);
       var url
-      if (status == ' ') {
+      if (status == "") {
         url = g_rootPath + '/front/product/evaluate/list/?productId=' + productId
-      } else {
-        url = g_rootPath + '/front/product/evaluate/list/?productId=' + productId + '&status=' + status
+      }else {
+        url = g_rootPath + '/front/product/evaluate/list/?productId=' + productId  + '&status=' + status
       }
       $('#evaluateListPanel').load(url)
     })

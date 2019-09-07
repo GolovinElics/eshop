@@ -40,8 +40,8 @@ public class ProductCategoryServiceImpl extends BaseService {
      * 根据父亲节点ID获取商品分类列表
      *
      * @param parentId 试题ID集合
-     *
-     * @return 商品分类列表
+     *      *
+     *      * @return 商品分类列表
      */
     public List<ProductCategoryDTO> getProductCategoriesByParent(Long parentId) {
         return productCategoryDao.getProductCategoriesByParent(parentId);

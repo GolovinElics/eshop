@@ -46,6 +46,13 @@ public class ProductServiceImpl extends BaseService {
     }
 
     /**
+     * 获取指定名字的商品列表
+     */
+    public List<ProductDTO> getProductByName(String name){
+        return productDao.getProductsByName(name);
+    }
+
+    /**
      * 获取同价位商品列表
      */
     public List<ProductDTO> getProductsByPrice(Double price) {
@@ -63,5 +70,6 @@ public class ProductServiceImpl extends BaseService {
 
         return product;
     }
+
 
 }

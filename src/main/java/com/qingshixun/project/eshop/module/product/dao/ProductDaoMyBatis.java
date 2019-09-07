@@ -30,6 +30,13 @@ public interface ProductDaoMyBatis {
     List<ProductDTO> getProductsByCategory(@Param("categoryId") Long categoryId);
 
     /**
+     * 获取指定词条模糊的商品列表
+     * @param name
+     * @return
+     */
+    List<ProductDTO> getProductsByName(@Param("name") String name);
+
+    /**
      * 获取同价位商品列表
      */
     List<ProductDTO> getProductsByPrice(@Param("price") Double price);

@@ -10,15 +10,20 @@
   </title>
   <link th:href="@{/css/reset.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/search.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/plugins/jquery-validationEngine/validationEngine.jquery.css}" rel="stylesheet" type="text/css">
   <link th:href="@{/plugins/toastr/toastr.css}" rel="stylesheet" type="text/css">
-
   <script th:src="@{/plugins/jquery-1.10.2.js}"></script>
+
+
+
 </head>
 <body>
 <div th:fragment="header-body">
   <div id="top" class="header">
+
     <div class="topBar">
+
       <div class="comWidth">
         <div class="rightBar fr">
           欢迎 <span th:if="${session['member']} != null" th:text="${session['member'].userName}"></span> 来到明博商城网！
@@ -30,21 +35,36 @@
         </div>
       </div>
     </div>
+
     <div class="logo">
       <div class="comWidth">
         <div class="logo_icon fl">
           <a th:href="@{/front/index}"><img th:src="@{/images/logo.png}" alt="明博商城网"></a>
         </div>
-        <div id="searchPanel" class="searchBar fr" hidden="true">
-          <div class="shopCar fl">
-            <a th:href="@{/front/cart/list}">购物车</a>
-          </div>
-          <div class="shopCar-count fl">
-            <a id="cartCount" href="#" th:text="${totalCartCount}"></a>
+        <div class="banner">
+          <!--添加搜索栏，引入搜索操作-->
+            <form action="/eweb/front/search" name="search" class="search_form" οnsubmit="return CheckNull();">
+                <div class="search-box-input">
+                  <input type="text" class="input-box" name="name" id="input-box" placeholder="请输入搜索的商品...">
+                </div>
+                <div>
+                    <button th:href="@{/front/search/(name=${name})}" type="submit" class="input_sub">
+                      搜索
+                   </button>
+                </div>
+            </form>
+          <div id="searchPanel" class="searchBar fr" hidden="true">
+           <div class="shopCar fl">
+             <a th:href="@{/front/cart/list}">购物车</a>
+           </div>
+           <div class="shopCar-count fl">
+             <a id="cartCount" href="#" th:text="${totalCartCount}"></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="nav">
       <div class="menu">
         <div class="all-sort">
@@ -56,7 +76,7 @@
           <ul class="clearfix">
             <li><a th:href="@{/front/index}" class="current">首页</a></li>
             <li><a href="http://localhost:8080/login/to_login">秒杀</a></li>
-            <li><a href="http://localhost:8082/chat">聊天</a></li>
+<!--            <li><a href="http://localhost:8082/chat">聊天</a></li>-->
             <!--<li><a href="#">服装城</a></li>-->
             <!--<li><a href="#">京东超市</a></li>-->
             <!--<li><a href="#">团购</a></li>-->

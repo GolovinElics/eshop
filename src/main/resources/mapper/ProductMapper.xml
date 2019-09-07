@@ -83,4 +83,19 @@
       pr.id = #{productId}
   </select>
 
+<!--  根据输入的name查询商品-->
+  <select id="getProductsByName" resultType="ProductDTO" >
+    SELECT  pr.id,
+      pr.name,
+      pr.marketPrice,
+      pr.price,
+      pr.screenshots,
+      pr.productImage,
+      pr.description
+    FROM
+      qsx_product pr
+    WHERE
+      pr.name LIKE CONCAT('%',#{name},'%');
+  </select>
+
 </mapper>
