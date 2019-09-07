@@ -1,0 +1,91 @@
+.container {
+    width: 500px;
+    height: 50px;
+    margin: 100px auto;
+}
+
+/*样式一*/
+.banner {
+    position: relative;
+    height: 35px;
+    top: 5px;
+}
+
+/*左边输入框设置样式*/
+.input_text{
+    width:300px;
+    height: 30px;
+    border:1px solid green;
+    /*清除掉默认的padding*/
+    padding:0px;
+
+    /*提示字首行缩进*/
+    text-indent: 10px;
+
+    /*去掉蓝色高亮框*/
+    outline: none;
+
+    /*用浮动解决内联元素错位及小间距的问题*/
+    float:left;
+}
+
+.search_form{
+    width:400px;
+    height:36px;
+    /*overflow: auto;*/
+    /*margin: auto;*/
+    position: absolute;
+    top: 48%; left: 38%; bottom: 10%; right: 0;
+}
+
+.input_sub{
+    width:78px;
+    height: 34px;
+    background: green;
+    position: absolute;
+    top: 6%; left: 80%; bottom: 10%; right: 0;
+
+    /*去掉submit按钮默认边框*/
+    border:0px;
+    /*改成右浮动也是可以的*/
+    float:left;
+    color:white;/*搜索的字体颜色为白色*/
+    cursor:pointer;/*鼠标变为小手*/
+}
+
+/*样式二*/
+.search-box-input {
+    height: 36px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 320px;
+}
+
+.input-box {
+
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 6px;
+    padding-left: 0px;
+    text-indent: 10px;
+    height: 34px;
+    line-height: 34px;
+    width: 320px;
+    margin-top: 2px;
+}
+
+.search-button {
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    width: 74px;
+    height: 40px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-align: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 825px;
+}

@@ -51,15 +51,44 @@
           </ul>
           <div class="fop-item ">
             <div class="fop-label">评价晒单</div>
+
+            <!--评论框-->
             <div class="fop-main">
               <div class="f-textarea">
-                <textarea name="description" id="message" placeholder="商品是否给力？快分享你的购买心得吧~" th:text="${evaluate.description}"></textarea>
+                <textarea name="description" id="txt" placeholder="商品是否给力？快分享你的购买心得吧~" th:text="${evaluate.description}"></textarea>
                 <div class="textarea-ext">
-                  <em class="textarea-num"><b>0</b> / 500</em>
+                  <em class="title2 hide"><b>0</b> / 200</em>
                   <span class="tips">（评价多于<span class="ftc1">10</span>个字,有机会奖励京豆哦~）</span>
                 </div>
               </div>
             </div>
+            
+            <!--限制输入字数并实时显示当前字数-->
+              <script>
+                var flag = true;
+                $('#txt').on('compositionstart',function(){
+                  flag = false;
+                })
+                $('#txt').on('compositionend',function(){
+                  flag = true;
+                })
+                $('#txt').on('input',function(){
+                  setTimeout(function(){
+                    if(flag){
+                      var num = $("#txt").val().replace(/\s+/g,"").length;
+                      if(num<200){
+                        $("#txt").removeAttr("maxlength");
+                        $(".title2").html('<span>'+num+'</span>' + '/200');
+                      }
+                      else{
+                        $(".title2 span").text(num);
+                        $("#txt").attr("maxlength",10);
+                      }
+                    }
+                  },0)
+                })
+              </script>
+
             <div class="fop-tip">
               <i class="tip-icon"></i><em class="tip-text"></em>
             </div>

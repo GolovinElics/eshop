@@ -19,7 +19,7 @@ import java.util.Date;
 public class EvaluateDTO extends BaseDTO {
 
     // 评分
-    private Integer score=0;
+    private Integer score = 0;
 
     // 满意度
     private String evaluateStatus;
@@ -42,12 +42,19 @@ public class EvaluateDTO extends BaseDTO {
     // 修改时间
     private String updateTime = DateUtils.timeToString(new Date());
 
-    public void setScore(Integer score) {
-    	this.score = score;
-    	setEvaluateStatus(score);
+    public EvaluateDTO() {
+        setEvaluateStatus();
     }
+
     public Integer getScore() {
-    	return score;
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+        //错误发生在这里，拿到前端数据后，没有将score拿去判断处理
+        //所以，再调用一次判断逻辑即可：
+        setEvaluateStatus(score);
     }
 
     public String getDescription() {
@@ -96,6 +103,10 @@ public class EvaluateDTO extends BaseDTO {
 
     public void setEvaluateStatus(String evaluateStatus) {
         this.evaluateStatus = evaluateStatus;
+    }
+
+    public void setEvaluateStatus() {
+        setEvaluateStatus(score);
     }
 
     public void setEvaluateStatus(int score) {

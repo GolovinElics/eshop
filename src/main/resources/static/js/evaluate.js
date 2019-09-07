@@ -6,9 +6,9 @@
  *****************************************************************************/
 /**
  * 自定义评论的js文件用于封装评论的js
- * 
+ *
  * @author QingShiXun
- * 
+ *
  * @version 1.0
  */
 var evaluate = (function() {
@@ -68,6 +68,7 @@ var evaluate = (function() {
 			}
 		});
 	}
+
 	// 设置点评星星样式
 	function starComm(starId) {
 		var oStar = document.getElementById(starId);

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<header th:replace="header::headerFragment('个人中心')"></header>
+    <meta charset="utf-8">
+<link rel="stylesheet" th:href="@{/static/css/product.css}" type="text/css">
+<body>
+
+
+<div th:replace="header::header-body"></div>
+<div class="mainContent comWidth">
+    <div class="rightArea fr">
+        <h2>用户信息</h2>
+        <div class="product_list">
+            <ul class="product_title">
+                <li class="pro">客户</li>
+                <li>用户名</li>
+                <li>联系方式</li>
+                <li>收货地址</li>
+                <li>用户状态</li>
+                <li>会员等级</li>
+                <li>购物积分</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>我的评价</li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+</body>
+<div th:replace="footer::footer-body"></div>
+<div th:replace="footer::footer"></div>
+</html>

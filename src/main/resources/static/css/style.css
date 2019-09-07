@@ -51,24 +51,10 @@
 
 .searchBar {
 	margin-right: 59px;
-	margin-top: 23px;
+	margin-top: 16px;
 	height: 35px;
 	font-size: 14px;
 	/*width: 429px;*/
-}
-
-.input_text {
-	width: 360px;
-	height: 35px;
-	line-height: 35px\9;
-}
-
-.input_btn {
-	width: 69px;
-	height: 35px;
-	background-color: #FF8C00;
-	color: #FFF;
-	cursor: pointer;
 }
 
 .shopCar, .shopCar-count {
@@ -183,7 +169,12 @@ a:hover, a:active {
 	width: 210px;
 	text-align: center;
 	font-size: 14px;
+
 }
+.menu .all-sort h2{
+	margin:0 !important;
+}
+
 
 .menu .all-sort a {
 	color: #FFF;
