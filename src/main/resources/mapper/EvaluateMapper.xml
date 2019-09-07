@@ -5,45 +5,45 @@
 
   <select id="getEvaluatesByStatusAndProduct" resultType="EvaluateDTO">
     SELECT
-      ev.id,
-      ev.score,
-      ev.updateTime,
-      ev.description,
+      evaluate.id,
+      evaluate.score,
+      evaluate.updateTime,
+      evaluate.description,
       me.id AS 'member.id',
       me.userName AS 'member.userName',
       ml.levelName AS 'member.level.levelName'
     FROM
-      qsx_evaluate ev,
+      qsx_evaluate evaluate,
       qsx_member me,
       qsx_member_level ml
     WHERE
-      ev.member_id = me.id AND
+      evaluate.member_id = me.id AND
       me.level_id = ml.id AND
       <if test="status == ''">
-        ev.evaluateStatus = #{status} AND
+        evaluate = #{status} AND
       </if>
-      ev.product_id = #{productId}
+      evaluate.product_id = #{productId}
   </select>
 
   <select id="getEvaluateByMemberAndProductAndOrder" resultType="EvaluateDTO">
     SELECT
-      ev.id,
-      ev.score,
-      ev.updateTime,
-      ev.description,
+      evaluate.id,
+      evaluate.score,
+      evaluate.updateTime,
+      evaluate.description,
       me.id AS 'member.id',
       me.userName AS 'member.userName',
       ml.levelName AS 'member.level.levelName'
     FROM
-      qsx_evaluate ev,
+      qsx_evaluate evaluate,
       qsx_member me,
       qsx_member_level ml
     WHERE
-      ev.member_id = me.id AND
+      evaluate.member_id = me.id AND
       me.level_id = ml.id AND
-      ev.member_id = #{memberId} AND
-      ev.product_id = #{productId} AND
-      ev.orderId = #{orderId}
+      evaluate.member_id = #{memberId} AND
+      evaluate.product_id = #{productId} AND
+      evaluate.orderId = #{orderId}
   </select>
 
   <select id="getTotalScoreByProduct" resultType="Integer">

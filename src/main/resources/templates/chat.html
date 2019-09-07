@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>robot</title>
+<link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../css/default.css" />
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+</head>
+<body>
+	<input id="clientIp" type="hidden" th:value="${clientIp}" />
+	<div class="container">
+		<div class="content bgcolor-3">
+
+
+			<div id="chatview" class="p1">
+				<div id="profile">
+					<div id="topmenu">明博商城-客服机器人</div>
+				</div>
+				<div id="chat-messages"></div>
+				<div id="sendmessage">
+					<input id="context" type="text" autofocus="autofocus"
+						maxlength="100" />
+					<button id="send"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="../scripts/jquery-1.9.1.min.js"></script>
+	<script src="../scripts/script-chat.js"></script>
+</body>
+</html>
