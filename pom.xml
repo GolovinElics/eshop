@@ -117,6 +117,12 @@
       <version>1.4.7</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.38</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
 <!--Maven插件设置，热部署相关；需要在spring-boot-maven-plugin插件中配置参数-->

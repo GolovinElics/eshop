@@ -1,23 +1,21 @@
 package com.qingshixun.project.eshop.module.message.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
+import com.alibaba.fastjson.JSONObject;
+import com.qingshixun.project.eshop.dto.Message;
+import com.qingshixun.project.eshop.module.message.dao.MessageMapper;
+import com.qingshixun.project.eshop.util.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONObject;
-
-import com.qingshixun.project.eshop.module.message.dao.MessageMapper;
-import com.qingshixun.project.eshop.dto.Message;
-import com.qingshixun.project.eshop.util.HttpUtil;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
 /**
  * 发送和接收用户消息
  *
+ * @author Golovin
  */
 @Service
 public class MessageService {

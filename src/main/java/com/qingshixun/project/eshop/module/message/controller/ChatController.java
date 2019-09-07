@@ -31,7 +31,6 @@ public class ChatController {
 		// 获取一下本机的IP地址
 		String clientIp = request.getRemoteAddr();
 		request.setAttribute("clientIp", clientIp);
-		System.out.println("dasdasdadas");
 		return "/chat";
 	}
 
@@ -45,9 +44,7 @@ public class ChatController {
 	@ResponseBody
 	public String sendUserMessage(Model model, @RequestParam("sendContent") String sendContent,
 			@RequestParam("clientIp") String clientIp) {
-		System.out.println("dasdasdadas1");
 		String reply = messageService.sendMessage(sendContent, clientIp);
-		System.out.println("dasdasdadas2");
 		return reply;
 	}
 

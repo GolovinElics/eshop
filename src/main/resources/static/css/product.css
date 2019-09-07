@@ -130,6 +130,7 @@
     padding-left: 20px;
     border-left: none;
     color: #666;
+    overflow: auto;
 }
 
 .pro img {

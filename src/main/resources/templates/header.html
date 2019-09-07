@@ -43,7 +43,7 @@
         <div class="banner">
           <!--添加搜索栏，引入搜索操作-->
             <form action="/eweb/front/search" name="search" class="search_form" οnsubmit="return CheckNull();">
-                <div class="search-box-input">
+                <div class="search_form2">
                   <input type="text" class="input-box" name="name" id="input-box" placeholder="请输入搜索的商品...">
                 </div>
                 <div>
@@ -73,8 +73,7 @@
         <div class="nav">
           <ul class="clearfix">
             <li><a th:href="@{/front/index}" class="current">首页</a></li>
-            <!--<li><a href="./chat" class="current">聊天机器人</a></li>-->
-            <li><a th:if="${session['member']} != null" th:href="@{/front/chat}" class="current">聊天机器人</a></li>
+            <li><a th:href="@{/front/chat} " th:if="${session['member']} != null" class="current">聊天机器人</a></li>
             <!--<li><a th:href="@{/front/chat}" class="current">聊天</a></li>-->
             <li><a th:href="@{/front/seckill}" class="current">秒杀</a></li>
             <!--<li><a href="#">服装城</a></li>-->

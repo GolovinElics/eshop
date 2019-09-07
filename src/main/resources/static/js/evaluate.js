@@ -44,7 +44,7 @@ var evaluate = (function() {
 			toastr.warning('商品评分不能为空！');
 			return false;
 		}
-		var message=$('#message').val();
+		var message=$('#txt').val();
 		if (message == '') {
 			toastr.warning('商品评价不能为空！');
 			return false;
