@@ -83,7 +83,7 @@
           总计<span>￥<span th:text="${productTotalPrice}"></span></span>
         </div>
         <div class="total">
-          实付<span id="totalAmount">￥<span th:text="${totalAmount}"></span></span>
+          实付<span id="totalAmount">￥<span id="totalAmount1" th:text="${totalAmount}"></span></span>
         </div>
         <input th:if="${orderId} == null" id="commitOrder" type="button" value="提交订单">
         <input th:if="${orderId} != null" id="payOrder" type="button" value="确认付款">

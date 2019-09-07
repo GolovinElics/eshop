@@ -42,6 +42,8 @@ var order = (function() {
 		// 点击去结算按钮触发事件
 		$("#commitOrder").click(
 				function() {
+					var totalAmount1 = $('#totalAmount1').text();
+					
 					var receiverId = $("#defaultReceiver").data("id");
 					var pargrams = '';
 					var payDiv;
@@ -61,7 +63,7 @@ var order = (function() {
 								var orderId = response.data;
 								payDiv = $(
 										'<div class="ms-alert">' + '<div class="ms-alert-body">' + '<div class="ms-alert-content">当前付款金额为' + totalAmount + ' <br> <br> 是否确认付款 </div>'
-												+ '<div class="ms-alert-buttons">' + '<div class="ms-alert-button confirm">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
+												+ '<div class="ms-alert-buttons">' + '<div ><a href="http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8?totalAmount='+totalAmount1+'">确定</div>' + '<div class="ms-alert-button cancel">取消</div>' + '</div>'
 												+ '</div>' + '</div>').alertconfirm();
 								// 点击确认付款
 								payDiv.on('confirm.ms.alert', function(e) {
