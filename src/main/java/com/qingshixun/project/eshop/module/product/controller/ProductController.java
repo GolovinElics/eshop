@@ -8,6 +8,7 @@ import com.qingshixun.project.eshop.dto.ProductDTO;
 import com.qingshixun.project.eshop.module.brand.service.BrandServiceImpl;
 import com.qingshixun.project.eshop.module.cart.service.CartItemServiceImpl;
 import com.qingshixun.project.eshop.module.evaluate.service.EvaluateServiceImpl;
+import com.qingshixun.project.eshop.module.history.service.HistoryService;
 import com.qingshixun.project.eshop.module.order.service.OrderServiceImpl;
 import com.qingshixun.project.eshop.module.product.service.ProductCategoryServiceImpl;
 import com.qingshixun.project.eshop.module.product.service.ProductServiceImpl;
@@ -28,6 +29,9 @@ public class ProductController extends BaseController {
 
     @Autowired
     private ProductCategoryServiceImpl productCategoryService;
+    
+    @Autowired
+    private HistoryService historyService;
 
     @Autowired
     private ProductTypeAttributeServiceImpl productTypeAttributeService;
@@ -76,8 +80,8 @@ public class ProductController extends BaseController {
     @RequestMapping("/main")
     public String main(Model model, @RequestParam Long productId) {
         ProductDTO product = productService.getProduct(productId);
-
         MemberDTO member = getCurrentUser();
+        historyService.setHistoryProductId(productId);
 
         model.addAttribute("product", product);
         model.addAttribute("cart", new CartItemDTO());

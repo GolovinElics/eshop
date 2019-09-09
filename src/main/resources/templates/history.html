@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览历史</title>
+    <link href="/eweb/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/eweb/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/eweb/plugins/jquery-validationEngine/validationEngine.jquery.css" rel="stylesheet" type="text/css">
+    <link href="/eweb/plugins/toastr/toastr.css" rel="stylesheet" type="text/css">
+    <script src="/eweb/plugins/jquery-1.10.2.js"></script>
+    <link href="/eweb/css/product-select.css" rel="stylesheet" type="text/css">
+</head>
+<header th:replace="header::headerFragment('浏览历史页')"></header>
+<body>
+<div th:replace="header::header-body"></div>
+<div id="historyList" class="selectInfo">
+    <div class="selectInfo-title">
+        <div class="amount fr">
+            共<span class="amount2" th:text="${#lists.size(historyproducts)}"></span>条浏览记录
+        </div>
+    </div>
+    <div class="item-info">
+        <ul>
+            <!-- 商品列表 -->
+            <li class="item-pic" th:each="product : ${historyproducts}">
+                <div class="picBox">
+                    <a th:href="@{/front/product/main(productId=${product.id})}"><img th:src="${product.productImage}" alt="商品-手机"></a>
+                </div>
+                <a th:href="@{/front/product/main(productId=${product.id})}" class="products-des" th:text="${product.name}"></a>
+                <div class="cur">
+                    <span class="products-price">￥<span th:text="${product.marketPrice}"></span></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
